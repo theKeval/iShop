@@ -30,6 +30,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func loginClicked(_ sender: Any) {
+        if rbAdmin.isSelected {
+            performSegue(withIdentifier: "segue_adminLogin", sender: self)
+        }
     }
     
 }
