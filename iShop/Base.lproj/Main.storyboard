@@ -3,6 +3,7 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -421,18 +422,30 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGl-sU-SGI">
+                                                    <rect key="frame" x="291" y="42.666666666666664" width="19" height="21.999999999999993"/>
+                                                    <state key="normal" image="trash" catalog="system">
+                                                        <color key="titleColor" name="AccentColor"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="deleteProduct:" destination="yBx-f4-SV4" eventType="touchUpInside" id="uBd-EE-XbU"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Lkt-xw-kHG" firstAttribute="leading" secondItem="E4G-oN-5G1" secondAttribute="leading" id="DBv-Vs-rzT"/>
                                                 <constraint firstItem="E4G-oN-5G1" firstAttribute="top" secondItem="4aF-5G-V8c" secondAttribute="topMargin" constant="10" id="a5l-SZ-dkZ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="vGl-sU-SGI" secondAttribute="trailing" constant="20" id="aw8-vK-ALL"/>
                                                 <constraint firstItem="EVA-lR-11x" firstAttribute="centerY" secondItem="4aF-5G-V8c" secondAttribute="centerY" id="bSy-YV-00S"/>
                                                 <constraint firstItem="EVA-lR-11x" firstAttribute="leading" secondItem="4aF-5G-V8c" secondAttribute="leading" id="dOD-qQ-QpE"/>
                                                 <constraint firstItem="Lkt-xw-kHG" firstAttribute="top" secondItem="E4G-oN-5G1" secondAttribute="bottom" constant="20" id="dhD-9T-1Kc"/>
                                                 <constraint firstItem="EVA-lR-11x" firstAttribute="top" secondItem="4aF-5G-V8c" secondAttribute="top" id="khS-mh-2E3"/>
                                                 <constraint firstItem="E4G-oN-5G1" firstAttribute="leading" secondItem="EVA-lR-11x" secondAttribute="trailing" constant="20" id="o7p-RH-uxJ"/>
+                                                <constraint firstItem="vGl-sU-SGI" firstAttribute="centerY" secondItem="4aF-5G-V8c" secondAttribute="centerY" id="woe-G9-0wK"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="uiProdDelete" destination="vGl-sU-SGI" id="zNI-MF-VQJ"/>
                                             <outlet property="uiProdImage" destination="EVA-lR-11x" id="WGB-ll-XAQ"/>
                                             <outlet property="uiProdName" destination="E4G-oN-5G1" id="kyK-8M-aeH"/>
                                             <outlet property="uiProdPrice" destination="Lkt-xw-kHG" id="xsB-UU-ULy"/>
@@ -457,6 +470,7 @@
                     </view>
                     <connections>
                         <outlet property="tvProducts" destination="Cgr-vv-Ys6" id="ev2-bJ-mQT"/>
+                        <segue destination="k4d-vi-Hxs" kind="show" identifier="segue_showProductDetails" id="xYS-iX-1j6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3dn-5Y-rmW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -466,13 +480,47 @@
         <!--Product Details-->
         <scene sceneID="WEk-bc-NmW">
             <objects>
-                <viewController id="k4d-vi-Hxs" customClass="VC_ProductDetails" customModule="iShop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" id="k4d-vi-Hxs" customClass="VC_ProductDetails" customModule="iShop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="whr-p4-twc">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8S-OP-n2Q">
+                                <rect key="frame" x="126" y="20" width="138" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmm-O3-kUv">
+                                <rect key="frame" x="20" y="64" width="110" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tKV-cY-v0j">
+                                <rect key="frame" x="20" y="105" width="350" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="5yt-ar-nM8"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="RgP-mE-6PM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RgP-mE-6PM" firstAttribute="trailing" secondItem="tKV-cY-v0j" secondAttribute="trailing" constant="20" id="Dbv-0R-GgH"/>
+                            <constraint firstItem="tKV-cY-v0j" firstAttribute="top" secondItem="mmm-O3-kUv" secondAttribute="bottom" constant="20" id="Lc2-BZ-CWm"/>
+                            <constraint firstItem="tKV-cY-v0j" firstAttribute="leading" secondItem="RgP-mE-6PM" secondAttribute="leading" constant="20" id="VfG-rC-N4T"/>
+                            <constraint firstItem="D8S-OP-n2Q" firstAttribute="top" secondItem="RgP-mE-6PM" secondAttribute="top" constant="20" id="bzI-o4-P1g"/>
+                            <constraint firstItem="mmm-O3-kUv" firstAttribute="top" secondItem="D8S-OP-n2Q" secondAttribute="bottom" constant="20" id="go8-oK-bJi"/>
+                            <constraint firstItem="mmm-O3-kUv" firstAttribute="leading" secondItem="RgP-mE-6PM" secondAttribute="leading" constant="20" id="hEO-BW-mOy"/>
+                            <constraint firstItem="D8S-OP-n2Q" firstAttribute="centerX" secondItem="whr-p4-twc" secondAttribute="centerX" id="mWe-l6-Cxg"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="IWg-L7-Qqd"/>
+                    <connections>
+                        <outlet property="uiProdImage" destination="tKV-cY-v0j" id="pOf-XO-3DU"/>
+                        <outlet property="uiProdName" destination="mmm-O3-kUv" id="Lo2-Dr-tln"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xRu-53-avk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -483,6 +531,10 @@
         <image name="background image" width="400" height="800"/>
         <image name="radioButton-checked" width="32" height="32"/>
         <image name="radioButton-unchecked" width="32" height="32"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

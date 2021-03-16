@@ -11,6 +11,7 @@ class VC_ProductList: UIViewController {
 
     @IBOutlet weak var tvProducts: UITableView!
     
+    var selectedProduct: Product?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,19 +21,23 @@ class VC_ProductList: UIViewController {
         tvProducts.dataSource = self
         tvProducts.tableFooterView = UIView()
         
+        MyData.fillData()
         tvProducts.reloadData()
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        let pdvc = segue.destination as! VC_ProductDetails
+        pdvc.selectedProduct = selectedProduct
     }
-    */
+    
 
 }
 
@@ -52,7 +57,9 @@ extension VC_ProductList: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //
+        selectedProduct = MyData.productList[indexPath.row]
+        performSegue(withIdentifier: "segue_showProductDetails", sender: self)
     }
+    
     
 }

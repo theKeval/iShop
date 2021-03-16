@@ -9,10 +9,19 @@ import UIKit
 
 class VC_ProductDetails: UIViewController {
 
+    @IBOutlet weak var uiProdName: UILabel!
+    @IBOutlet weak var uiProdImage: UIImageView!
+    
+    var selectedProduct: Product?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if let prod = selectedProduct {
+            uiProdName.text = selectedProduct?.prodName
+            uiProdImage.image = UIImage(named: prod.prodImage)
+        }
     }
     
 
