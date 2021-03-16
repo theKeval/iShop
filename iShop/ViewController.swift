@@ -33,6 +33,10 @@ class ViewController: UIViewController {
         if rbAdmin.isSelected {
             performSegue(withIdentifier: "segue_adminLogin", sender: self)
         }
+        
+        if rbCustomer.isSelected {
+            performSegue(withIdentifier: "segue_customerLogin", sender: self)
+        }
     }
     
 }

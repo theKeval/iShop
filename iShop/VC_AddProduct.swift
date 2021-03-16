@@ -59,12 +59,18 @@ class VC_AddProduct: UIViewController {
     }
     
     @IBAction func addProduct(_ sender: Any) {
-        let product = Product(name: tfProdName.text!, desc: tfProdDesc.text!, category: selectedCategory, image: MyData.imageList[pickerImage.selectedRow(inComponent: 1)], price: Double(tfProdPrice.text!)!, quantity: Int(tfQuantity.text!)!)
+        let product = Product(name: tfProdName.text!, desc: tfProdDesc.text!, category: selectedCategory, image: MyData.imageList[pickerImage.selectedRow(inComponent: 0)], price: Double(tfProdPrice.text!)!, quantity: Int(tfQuantity.text!)!)
         
         MyData.productList.append(product)
         
+        print("\(product.prodName) added")
+        
     }
     
+    @IBAction func goBack(_ sender: Any) {
+        // navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
+    }
     
     /*
     // MARK: - Navigation

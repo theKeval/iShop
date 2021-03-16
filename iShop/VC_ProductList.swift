@@ -9,10 +9,18 @@ import UIKit
 
 class VC_ProductList: UIViewController {
 
+    @IBOutlet weak var tvProducts: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        tvProducts.delegate = self
+        tvProducts.dataSource = self
+        tvProducts.tableFooterView = UIView()
+        
+        tvProducts.reloadData()
     }
     
 
@@ -26,4 +34,25 @@ class VC_ProductList: UIViewController {
     }
     */
 
+}
+
+extension VC_ProductList: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        MyData.productList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let selectedProduct = MyData.productList[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellProduct") as! ProductCell
+        cell.setData(prodInstance: selectedProduct)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //
+    }
+    
 }
