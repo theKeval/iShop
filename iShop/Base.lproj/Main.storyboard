@@ -234,7 +234,7 @@
                                                     <action selector="stepperQuntClicked:" destination="5NC-ai-Y0F" eventType="valueChanged" id="qNz-iQ-PxT"/>
                                                 </connections>
                                             </stepper>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OGw-YB-sRq">
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OGw-YB-sRq">
                                                 <rect key="frame" x="203.33333333333337" y="0.0" width="146.66666666666663" height="32"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -250,7 +250,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kiy-MI-7Rw">
                                         <rect key="frame" x="0.0" y="254.33333333333331" width="350" height="80"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcV-Mc-cHl">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcV-Mc-cHl">
                                                 <rect key="frame" x="0.0" y="0.0" width="121" height="32"/>
                                                 <state key="normal" title="Electronics" image="radioButton-unchecked">
                                                     <color key="titleColor" systemColor="labelColor"/>
@@ -275,7 +275,7 @@
                                                 <state key="normal" title="Furniture" image="radioButton-unchecked">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
-                                                <state key="selected" title="Decoration" image="radioButton-checked"/>
+                                                <state key="selected" title="Furniture" image="radioButton-checked"/>
                                                 <connections>
                                                     <action selector="rbFurnitureClicked:" destination="5NC-ai-Y0F" eventType="touchUpInside" id="cLQ-g2-2SF"/>
                                                 </connections>
@@ -302,7 +302,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yL4-yY-08c">
-                                                <rect key="frame" x="0.0" y="0.0" width="350" height="216"/>
+                                                <rect key="frame" x="0.0" y="0.33333333333331439" width="350" height="216"/>
                                             </pickerView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -315,14 +315,27 @@
                                             <constraint firstItem="yRH-zf-t1Q" firstAttribute="top" secondItem="hDn-JB-6J0" secondAttribute="top" id="kgr-1J-Hpk"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="inP-jB-m7f">
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="inl-12-jcT">
                                         <rect key="frame" x="0.0" y="574.33333333333337" width="350" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Add"/>
-                                        <connections>
-                                            <action selector="addProduct:" destination="5NC-ai-Y0F" eventType="touchUpInside" id="smr-7z-iiJ"/>
-                                        </connections>
-                                    </button>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tly-Yb-MBk">
+                                                <rect key="frame" x="0.0" y="0.0" width="165" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="165" id="Dnv-qm-hHU"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="Cancel"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="inP-jB-m7f">
+                                                <rect key="frame" x="165" y="0.0" width="185" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="Add"/>
+                                                <connections>
+                                                    <action selector="addProduct:" destination="5NC-ai-Y0F" eventType="touchUpInside" id="smr-7z-iiJ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>

@@ -10,12 +10,12 @@ import Foundation
 class Product {
     var prodName: String
     var prodDescription: String
-    var prodCategory: String
+    var prodCategory: Categories
     var prodImage: String
     var prodPrice: Double
     var quantity: Int
     
-    init(name: String, desc: String, category: String, image: String, price: Double, quantity: Int) {
+    init(name: String, desc: String, category: Categories, image: String, price: Double, quantity: Int) {
         self.prodName = name
         self.prodDescription = desc
         self.prodCategory = category
@@ -23,4 +23,10 @@ class Product {
         self.prodPrice = price
         self.quantity = quantity
     }
+}
+
+enum Categories {
+    case Electronics
+    case Footwear
+    case Furniture
 }

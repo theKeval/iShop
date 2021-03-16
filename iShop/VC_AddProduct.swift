@@ -17,27 +17,52 @@ class VC_AddProduct: UIViewController {
     @IBOutlet weak var btnCategElectronics: UIButton!
     @IBOutlet weak var btnCategFurniture: UIButton!
     @IBOutlet weak var btnCategFootwear: UIButton!
-    
     @IBOutlet weak var pickerImage: UIPickerView!
+    
+    var selectedCategory: Categories = Categories.Electronics
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // additional setup on initialization
+        pickerImage.delegate = self
+        pickerImage.dataSource = self
+        
+        tfQuantity.text = "0"
     }
     
-    @IBAction func stepperQuntClicked(_ sender: Any) {
+    @IBAction func stepperQuntClicked(_ sender: UIStepper) {
+        tfQuantity.text = String(Int(sender.value))
     }
     
     @IBAction func rbElectronicsClicked(_ sender: Any) {
+        btnCategElectronics.isSelected = true
+        btnCategFootwear.isSelected = false
+        btnCategFurniture.isSelected = false
+        
+        selectedCategory = Categories.Electronics
     }
     @IBAction func rbFootwearClicked(_ sender: Any) {
+        btnCategElectronics.isSelected = false
+        btnCategFootwear.isSelected = true
+        btnCategFurniture.isSelected = false
+        
+        selectedCategory = Categories.Footwear
     }
     @IBAction func rbFurnitureClicked(_ sender: Any) {
+        btnCategElectronics.isSelected = false
+        btnCategFootwear.isSelected = false
+        btnCategFurniture.isSelected = true
+        
+        selectedCategory = Categories.Furniture
     }
     
     @IBAction func addProduct(_ sender: Any) {
+        let product = Product(name: tfProdName.text!, desc: tfProdDesc.text!, category: selectedCategory, image: MyData.imageList[pickerImage.selectedRow(inComponent: 1)], price: Double(tfProdPrice.text!)!, quantity: Int(tfQuantity.text!)!)
+        
+        MyData.productList.append(product)
+        
     }
     
     
