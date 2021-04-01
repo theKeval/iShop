@@ -303,7 +303,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yL4-yY-08c">
-                                                <rect key="frame" x="0.0" y="0.0" width="350" height="216"/>
+                                                <rect key="frame" x="0.0" y="0.33333333333331439" width="350" height="216"/>
                                             </pickerView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
